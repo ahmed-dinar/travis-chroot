@@ -7,6 +7,7 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install dchroot debootstrap
   - sudo mkdir /JAIL/
+  - sudo chmod 777 /etc/schroot/schroot.conf
   - sudo echo "[xenial]" > /etc/schroot/schroot.conf
   - sudo echo "description=Ubuntu Xenial Xerus" > /etc/schroot/schroot.conf
   - sudo echo "location=/JAIL" > /etc/schroot/schroot.conf
