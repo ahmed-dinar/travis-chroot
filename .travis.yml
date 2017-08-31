@@ -3,17 +3,17 @@ sudo: required
 language: node_js
 node_js:
   - "6"
-script:
-  - "apt-get update"
-  - "apt-get install dchroot debootstrap"
-  - "mkdir /var/SECURITY/JAIL/"
-  - "echo "[xenial]" > /etc/schroot/schroot.conf"
-  - "echo "description=Ubuntu Xenial Xerus" > /etc/schroot/schroot.conf"
-  - "echo "location=/var/SECURITY/JAIL" > /etc/schroot/schroot.conf"
-  - "echo "priority=3" > /etc/schroot/schroot.conf"
-  - "echo "users=ahmed-dinar" > /etc/schroot/schroot.conf"
-  - "echo "groups=sbuild" > /etc/schroot/schroot.conf"
-  - "echo "root-groups=root" > /etc/schroot/schroot.conf"
-  - "debootstrap --variant=buildd --arch amd64 xenial /var/SECURITY/JAIL/ http://mirror.math.princeton.edu/pub/ubuntu/"
-  - "mount proc /var/SECURITY/JAIL/proc -t proc"
-  - "chroot /var/SECURITY/JAIL/"
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install dchroot debootstrap
+  - sudo mkdir /var/SECURITY/JAIL/
+  - sudo echo "[xenial]" > /etc/schroot/schroot.conf
+  - sudo echo "description=Ubuntu Xenial Xerus" > /etc/schroot/schroot.conf
+  - sudo echo "location=/var/SECURITY/JAIL" > /etc/schroot/schroot.conf
+  - sudo echo "priority=3" > /etc/schroot/schroot.conf
+  - sudo echo "users=ahmed-dinar" > /etc/schroot/schroot.conf
+  - sudo echo "groups=sbuild" > /etc/schroot/schroot.conf
+  - sudo echo "root-groups=root" > /etc/schroot/schroot.conf
+  - sudo debootstrap --variant=buildd --arch amd64 xenial /var/SECURITY/JAIL/ http://mirror.math.princeton.edu/pub/ubuntu/
+  - sudo mount proc /var/SECURITY/JAIL/proc -t proc
+  - sudo chroot /var/SECURITY/JAIL/
