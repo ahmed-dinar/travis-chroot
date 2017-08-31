@@ -1,0 +1,19 @@
+dist: trusty
+sudo: required
+language: node_js
+node_js:
+  - "6"
+script:
+  - "apt-get update"
+  - "apt-get install dchroot debootstrap"
+  - "mkdir /var/SECURITY/JAIL/"
+  - "echo "[xenial]" > /etc/schroot/schroot.conf"
+  - "echo "description=Ubuntu Xenial Xerus" > /etc/schroot/schroot.conf"
+  - "echo "location=/var/SECURITY/JAIL" > /etc/schroot/schroot.conf"
+  - "echo "priority=3" > /etc/schroot/schroot.conf"
+  - "echo "users=ahmed-dinar" > /etc/schroot/schroot.conf"
+  - "echo "groups=sbuild" > /etc/schroot/schroot.conf"
+  - "echo "root-groups=root" > /etc/schroot/schroot.conf"
+  - "debootstrap --variant=buildd --arch amd64 xenial /var/SECURITY/JAIL/ http://mirror.math.princeton.edu/pub/ubuntu/"
+  - "mount proc /var/SECURITY/JAIL/proc -t proc"
+  - "chroot /var/SECURITY/JAIL/"
