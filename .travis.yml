@@ -6,14 +6,14 @@ node_js:
 before_install:
   - sudo apt-get update
   - sudo apt-get install dchroot debootstrap
-  - sudo mkdir /var/SECURITY/JAIL/
+  - sudo mkdir /JAIL/
   - sudo echo "[xenial]" > /etc/schroot/schroot.conf
   - sudo echo "description=Ubuntu Xenial Xerus" > /etc/schroot/schroot.conf
-  - sudo echo "location=/var/SECURITY/JAIL" > /etc/schroot/schroot.conf
+  - sudo echo "location=/JAIL" > /etc/schroot/schroot.conf
   - sudo echo "priority=3" > /etc/schroot/schroot.conf
   - sudo echo "users=ahmed-dinar" > /etc/schroot/schroot.conf
   - sudo echo "groups=sbuild" > /etc/schroot/schroot.conf
   - sudo echo "root-groups=root" > /etc/schroot/schroot.conf
-  - sudo debootstrap --variant=buildd --arch amd64 xenial /var/SECURITY/JAIL/ http://mirror.math.princeton.edu/pub/ubuntu/
-  - sudo mount proc /var/SECURITY/JAIL/proc -t proc
-  - sudo chroot /var/SECURITY/JAIL/
+  - sudo debootstrap --variant=buildd --arch amd64 xenial /JAIL/ http://mirror.math.princeton.edu/pub/ubuntu/
+  - sudo mount proc /JAIL/proc -t proc
+  - sudo chroot /JAIL/
