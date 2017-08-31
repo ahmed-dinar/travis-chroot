@@ -17,4 +17,13 @@ before_install:
   - sudo echo "root-groups=root" > /etc/schroot/schroot.conf
   - sudo debootstrap --variant=buildd --arch amd64 xenial /JAIL/ http://mirror.math.princeton.edu/pub/ubuntu/
   - sudo mount proc /JAIL/proc -t proc
+  - sudo cat /etc/schroot/schroot.conf
+  - ls /JAIL
   - sudo chroot /JAIL/
+  - gcc --version
+  - python3 --version
+  - apt-get update
+  - apt-get -y upgrade
+  - python3 --version
+  - apt-get install default-jdk
+  - java -version
