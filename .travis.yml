@@ -4,28 +4,12 @@ language: node_js
 node_js:
   - "6"
 before_install:
+  - lsb_release -a
   - sudo apt-get update
-  - sudo apt-get install dchroot debootstrap
-  - sudo mkdir /JAIL/
-  - sudo chmod 777 /etc/schroot/schroot.conf
-  - sudo echo "[xenial]" > /etc/schroot/schroot.conf
-  - sudo echo "description=Ubuntu Xenial Xerus" > /etc/schroot/schroot.conf
-  - sudo echo "location=/JAIL" > /etc/schroot/schroot.conf
-  - sudo echo "priority=3" > /etc/schroot/schroot.conf
-  - sudo echo "users=ahmed-dinar" > /etc/schroot/schroot.conf
-  - sudo echo "groups=sbuild" > /etc/schroot/schroot.conf
-  - sudo echo "root-groups=root" > /etc/schroot/schroot.conf
-  - sudo debootstrap --variant=buildd --arch amd64 xenial /JAIL/ http://mirror.math.princeton.edu/pub/ubuntu/
-  - sudo mount proc /JAIL/proc -t proc
-  - sudo cat /etc/schroot/schroot.conf
+  - sudo mkdir /home/runs
 install:
-  - ls /JAIL
+  - sudo apt-get install default-jdk
 script:
-  - sudo chroot /JAIL/
-    - gcc --version
-    - python3 --version
-    - apt-get update
-    - apt-get -y upgrade
-    - python3 --version
-    - apt-get install default-jdk
-    - java -version
+  - gcc --version
+  - java -version
+  - ls /home/runs
