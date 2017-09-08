@@ -21,11 +21,13 @@ before_install:
   - ls /JAIL
   - sudo touch /JAIL/chroot-setup.sh
   - sudo chmod 777 /JAIL/chroot-setup.sh
-  - sudo echo "#!/bin/bash" > /JAIL/chroot-setup.sh
-  - sudo echo "gcc --version" > /JAIL/chroot-setup.sh
-  - sudo echo "apt-get install default-jdk" > /JAIL/chroot-setup.sh
-  - sudo echo "java -version" > /JAIL/chroot-setup.sh
-  - sudo echo "exit" > /JAIL/chroot-setup.sh
+  - sudo cat <<EOT >> /JAIL/chroot-setup.sh
+  - #!/bin/bash
+  - gcc --version
+  - apt-get install default-jdk
+  - java -version
+  - exit
+  - EOT
   - sudo cat /JAIL/chroot-setup.sh
   - sudo chmod +x /JAIL/chroot-setup.sh
 install:
