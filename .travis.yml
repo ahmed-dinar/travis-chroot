@@ -4,10 +4,9 @@ language: node_js
 node_js:
   - "6"
 before_install:
-  - ls
   - sudo chmod +x install-chroot.sh
   - sudo ./install-chroot.sh
 install:
-  - sudo chroot /JAIL ./setup-chroot.sh
+  - sudo chroot /JAIL yes Yes | ./setup-chroot.sh
 script:
   - sudo echo "done!"
