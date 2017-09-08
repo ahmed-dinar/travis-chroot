@@ -26,8 +26,9 @@ before_install:
   - sudo echo "apt-get install default-jdk" > /JAIL/chroot-setup.sh
   - sudo echo "java -version" > /JAIL/chroot-setup.sh
   - sudo echo "exit" > /JAIL/chroot-setup.sh
-install:
+  - sudo cat /JAIL/chroot-setup.sh
   - sudo chmod +x /JAIL/chroot-setup.sh
+install:
   - sudo chroot /JAIL ./chroot-setup.sh
 script:
   - sudo echo "done!"
