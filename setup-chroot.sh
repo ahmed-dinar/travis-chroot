@@ -2,6 +2,6 @@
 
 ls
 gcc --version
-apt-get install default-jdk
+apt-get -y install default-jdk
 java -version
 exit
