@@ -14,13 +14,13 @@ sudo debootstrap --variant=buildd --arch amd64 xenial /var/SECURITY/JAIL/ http:/
 
 # mount proc to chroot
 sudo mount proc /var/SECURITY/JAIL/proc -t proc
-ls /JAIL
+ls /var/SECURITY/JAIL/
 
 # setup chroot, check gcc, insall java, check java
-sudo cp setup-chroot.sh /JAIL
+sudo cp setup-chroot.sh /var/SECURITY/JAIL/
 sudo cat /var/SECURITY/JAIL/setup-chroot.sh
 sudo chmod +x /var/SECURITY/JAIL/setup-chroot.sh
-sudo chroot /JAIL ./setup-chroot.sh
+sudo chroot /var/SECURITY/JAIL/ ./setup-chroot.sh
 
 # make programm run directory inside chroot
 sudo mkdir /var/SECURITY/JAIL/home/runs
