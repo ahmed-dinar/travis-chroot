@@ -30,6 +30,4 @@ install:
   - sudo chmod +x /JAIL/chroot-setup.sh
   - sudo chroot /JAIL ./chroot-setup.sh
 script:
-  - gcc --version
-  - java -version
-  - ls /home/runs
+  - sudo echo "done!"
