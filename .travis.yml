@@ -7,6 +7,6 @@ before_install:
   - sudo chmod +x install-chroot.sh
   - sudo ./install-chroot.sh
 install:
-  - sudo chroot /JAIL yes Yes | ./setup-chroot.sh
+  - sudo chroot /JAIL ./setup-chroot.sh
 script:
   - sudo echo "done!"
