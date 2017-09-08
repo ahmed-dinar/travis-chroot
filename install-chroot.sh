@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ls
+
 sudo apt-get update
 sudo apt-get install dchroot debootstrap
 sudo mkdir /JAIL/
@@ -15,3 +15,7 @@ ls /JAIL
 sudo cp setup-chroot.sh /JAIL
 sudo cat /JAIL/setup-chroot.sh
 sudo chmod +x /JAIL/setup-chroot.sh
+sudo chroot /JAIL ./setup-chroot.sh
+
+sudo mount proc /JAIL/proc -t proc
+sudo mkdir /JAIL/home/runs
