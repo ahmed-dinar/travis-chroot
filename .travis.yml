@@ -15,19 +15,18 @@ before_install:
   - sudo echo "users=ahmed-dinar" > /etc/schroot/schroot.conf
   - sudo echo "groups=sbuild" > /etc/schroot/schroot.conf
   - sudo echo "root-groups=root" > /etc/schroot/schroot.conf
+  - sudo cat /etc/schroot/schroot.conf
   - sudo debootstrap --variant=buildd --arch amd64 xenial /JAIL/ http://mirror.math.princeton.edu/pub/ubuntu/
   - sudo mount proc /JAIL/proc -t proc
   - sudo cat /etc/schroot/schroot.conf
   - ls /JAIL
   - sudo touch /JAIL/chroot-setup.sh
   - sudo chmod 777 /JAIL/chroot-setup.sh
-  - sudo cat <<EOT >> /JAIL/chroot-setup.sh
-  - #!/bin/bash
-  - gcc --version
-  - apt-get install default-jdk
-  - java -version
-  - exit
-  - EOT
+  - sudo echo "#!/bin/bash" > /JAIL/chroot-setup.sh
+  - sudo echo "gcc --version" >> /JAIL/chroot-setup.sh
+  - sudo echo "apt-get install default-jdk" >> /JAIL/chroot-setup.sh
+  - sudo echo "java -version" >> /JAIL/chroot-setup.sh
+  - sudo echo "exit" >> /JAIL/chroot-setup.sh
   - sudo cat /JAIL/chroot-setup.sh
   - sudo chmod +x /JAIL/chroot-setup.sh
 install:
